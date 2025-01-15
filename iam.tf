@@ -119,3 +119,10 @@ resource "aws_iam_role_policy_attachment" "aws-config-policy" {
   role       = aws_iam_role.main[count.index].name
   policy_arn = aws_iam_policy.aws-config-policy[0].arn
 }
+
+resource "aws_iam_role_policy_attachment" "additional_policies" {
+  count = var.enable_config_recorder ? length(var.additional_policy_arns) : 0
+
+  role = aws_iam_role.main[count.index].name
+  policy_arn = var.additional_policy_arns[count.index]
+}
