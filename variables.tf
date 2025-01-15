@@ -469,6 +469,12 @@ variable "exclude_permission_boundary" {
   default     = false
 }
 
+variable "exclusion_by_resource_types" {
+  description = "A list that specifies the types of AWS resources for which AWS Config does *not* record configuration changes (for example, AWS::EC2::Instance or AWS::CloudTrail::Trail). See relevant part of AWS Docs for available types."
+  type        = list(string)
+  default     = []
+}
+
 variable "expected_delivery_window_age" {
   description = "Maximum age in hours of the most recent delivery to CloudWatch logs that satisfies compliance."
   type        = number
