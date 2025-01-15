@@ -10,6 +10,12 @@ variable "acm_days_to_expiration" {
   default     = 14
 }
 
+variable "additional_policy_arns" {
+  description = "Any additional policies to attach to the Config role.  Provide an array of ARNs, keeping in mind that this module already attaches a couple policies to the role, so you might hit the 10-policy-per-role limit faster than you think."
+  type        = list(string)
+  default     = []
+}
+
 variable "aggregate_organization" {
   description = "Aggregate compliance data by organization"
   type        = bool
